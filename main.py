@@ -54,9 +54,9 @@ def deshifrovanie(text, key, alphabet):
             key_index = alphabet.index(key[j % key_length])
             encrypted_index = (text_index - key_index) % len(alphabet)
             mytext += alphabet[encrypted_index]
-            j += 1
         else:
             mytext += symb
+        j += 1
     return mytext.lower()
 
 
