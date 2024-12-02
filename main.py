@@ -1,15 +1,15 @@
 import kivy
-from kivy.app import App
-from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.label import Label
-from kivy.uix.textinput import TextInput
-from kivy.uix.button import Button
-from kivy.uix.screenmanager import ScreenManager, Screen, SwapTransition
+from kivy.app import App #создание приложения
+from kivy.uix.boxlayout import BoxLayout #автоматическое распределение пространства между виджетами
+from kivy.uix.label import Label #текст 
+from kivy.uix.textinput import TextInput #поле ввода
+from kivy.uix.button import Button #кнопки
+from kivy.uix.screenmanager import ScreenManager, Screen, SwapTransition #слои приложения, экраны, переход между экранами(замена)
 
-from kivy.core.clipboard import Clipboard
-from kivy.properties import ObjectProperty, StringProperty
+from kivy.core.clipboard import Clipboard #копирование текста
+from kivy.properties import ObjectProperty, StringProperty #связывание свойств объекта
 
-from kivy.config import Config
+from kivy.config import Config #дизайн
 Config.set('kivy', 'keyboard_mode', 'systemanddock')
 
 # Определение русского алфавита
@@ -30,7 +30,7 @@ def shifrovanie(text, key, alphabet):
     for symb in text:
         if symb in alphabet:
             text_index = alphabet.index(symb)
-            key_index = alphabet.index(key[j % key_length])
+            key_index = alphabet.index(key[j % key_length]) #цикличное использование ключа
             encrypted_index = (text_index + key_index) % len(alphabet)
             mytext += alphabet[encrypted_index]
         else:
@@ -103,7 +103,7 @@ class CipherApp(App):
         sm.add_widget(CipherScreen(ENGLISH_ALPHABET, name='english'))
 
         def post_build_init(ev):
-            from kivy.base import EventLoop
+            from kivy.base import EventLoop #непрерывное исполнение приложения
             EventLoop.window.bind(on_keyboard=hook_keyboard)
 
         def hook_keyboard(window, key, *largs):
