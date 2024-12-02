@@ -35,7 +35,7 @@ def shifrovanie(text, key, alphabet):
             mytext += alphabet[encrypted_index]
         else:
             mytext += symb  # Если символ не в алфавите, добавляем его как есть
-         j += 1
+        j += 1
     return mytext.lower()  # Возвращаем зашифрованный текст в нижнем регистре
 
 
